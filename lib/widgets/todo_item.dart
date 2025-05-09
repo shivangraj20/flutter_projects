@@ -20,34 +20,35 @@ class TodoItem extends StatelessWidget {
           // print('Clicked on the task');
         },
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(50),
         ),
         contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
-        tileColor: Colors.yellow.shade200,
+        tileColor: Colors.grey.shade700,
         leading: Icon( todo.isDone?
           Icons.check_box: Icons.check_box_outline_blank,
-          color: Colors.green,
+          color: Colors.white70,
         ),
         title: Text(
           todo.todoText!,
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.w500,
-            color: Colors.lightBlueAccent,
+            color: Colors.white70,
             decoration: todo.isDone? TextDecoration.lineThrough: null,
           ),
         ),
         trailing: Container(
-          margin: EdgeInsets.symmetric(vertical: 12),
-          height: 25,
-          width: 25,
-          decoration: BoxDecoration(
-            color: Colors.red,
-            borderRadius: BorderRadius.circular(5),
-          ),
+          // margin: EdgeInsets.symmetric(vertical: 12),
+
+          // height: 25,
+          // width: 25,
+          // decoration: BoxDecoration(
+          //   color: Colors.black87,
+          //   borderRadius: BorderRadius.circular(5),
+          // ),
           child: IconButton(
-            color: Colors.white,
-            iconSize: 16,
+            color: Colors.white60,
+            iconSize: 20,
             icon: Icon(Icons.delete),
             onPressed: () {
               onDeleteItem(todo.id);

@@ -36,7 +36,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.pink,
+      backgroundColor: Colors.black,
       appBar: _buildAppBar(),
       body: Stack(
         children: [
@@ -56,7 +56,7 @@ class _HomeState extends State<Home> {
                             style: TextStyle(
                               fontSize: 60,
                               fontWeight: FontWeight.w700,
-                              color: Colors.lightBlueAccent,
+                              color: Colors.grey.shade200,
                             ),
                           ),
                         ),
@@ -81,7 +81,7 @@ class _HomeState extends State<Home> {
                       color: Colors.white,
                       boxShadow: const [
                         BoxShadow(
-                          color: Colors.blue,
+                          color: Colors.white70,
                           offset: Offset(0.0, 0.0),
                           blurRadius: 10.0,
                           spreadRadius: 0.0,
@@ -106,7 +106,7 @@ class _HomeState extends State<Home> {
                       _addToDoItem(_todoController.text);
                     },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.lightBlueAccent,
+                      backgroundColor: Colors.white,
                       minimumSize: Size(60, 60),
                       elevation: 10,
                     ),
@@ -156,7 +156,7 @@ class _HomeState extends State<Home> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
-        color: Colors.yellow.shade200,
+        color: Colors.white24,
         borderRadius: BorderRadius.circular(20),
       ),
       child: TextField(
@@ -165,13 +165,13 @@ class _HomeState extends State<Home> {
           contentPadding: EdgeInsets.all(8),
           prefixIcon: Icon(
             Icons.search,
-            color: Colors.lightBlueAccent,
+            color: Colors.white54,
             size: 30,
           ),
           prefixIconConstraints: BoxConstraints(minHeight: 20, minWidth: 25),
           border: InputBorder.none,
-          hintText: 'Search',
-          hintStyle: TextStyle(color: Colors.lightBlue),
+          hintText: 'Find Task',
+          hintStyle: TextStyle(color: Colors.white54),
         ),
       ),
     );
@@ -179,7 +179,7 @@ class _HomeState extends State<Home> {
 
   AppBar _buildAppBar() {
     return AppBar(
-      backgroundColor: Colors.lightBlueAccent,
+      backgroundColor: Colors.black,
       elevation: 0,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
