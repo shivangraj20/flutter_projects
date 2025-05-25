@@ -23,14 +23,23 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  final todoslist = ToDo.todoList();
+  final todoslist = <ToDo>[];
   List<ToDo> _foundToDo = [];
   final _todoController = TextEditingController();
 
   @override
   void initState() {
-    _foundToDo = todoslist;
     super.initState();
+    _loadSavedTasks();
+  }
+
+  Future<void>_loadSavedTasks() async{
+    final savedTasks = await ToDo.loadTasks();
+    setState(() {
+      todoslist.clear();
+      todoslist.addAll(savedTasks);
+      _foundToDo = todoslist;
+    });
   }
 
   @override
@@ -78,7 +87,7 @@ class _HomeState extends State<Home> {
                     margin: EdgeInsets.only(bottom: 20, left: 20, right: 20),
                     padding: EdgeInsets.symmetric(horizontal: 20, vertical: 5),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.white70,
                       boxShadow: const [
                         BoxShadow(
                           color: Colors.white70,
@@ -87,7 +96,7 @@ class _HomeState extends State<Home> {
                           spreadRadius: 0.0,
                         ),
                       ],
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(45),
                     ),
                     child: TextField(
                       controller: _todoController,
@@ -124,19 +133,25 @@ class _HomeState extends State<Home> {
     setState(() {
       todo.isDone = !todo.isDone;
     });
+    ToDo.saveTasks(todoslist);
   }
 
   void _deleteToDoItem(String id){
     setState(() {
       todoslist.removeWhere((item) => item.id == id);
     });
+    ToDo.saveTasks(todoslist);
   }
 
   void _addToDoItem(String toDo){
+    if  (toDo.trim().isEmpty) return;
+
     setState(() {
-      todoslist.add(ToDo(id: DateTime.now().microsecondsSinceEpoch.toString(), todoText: toDo),);
+      final newTask = ToDo(id: DateTime.now().microsecondsSinceEpoch.toString(), todoText: toDo);
+      todoslist.add(newTask);
+      _todoController.clear();
     });
-    _todoController.clear();
+    ToDo.saveTasks(todoslist);
   }
 
   void runFilter(String enteredKeyword){
@@ -190,7 +205,7 @@ class _HomeState extends State<Home> {
             width: 35,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(25),
-              child: Image.asset('assets/images/my pj l;.jpg'),
+              child: Image.asset('assets/images/tt.png'),
             ),
           ),
         ],

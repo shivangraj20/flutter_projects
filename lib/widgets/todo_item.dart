@@ -42,7 +42,7 @@ class TodoItem extends StatelessWidget {
 
           // height: 25,
           // width: 25,
-          // decoration: BoxDecoration(
+          // decoration: BoxDecoration
           //   color: Colors.black87,
           //   borderRadius: BorderRadius.circular(5),
           // ),
